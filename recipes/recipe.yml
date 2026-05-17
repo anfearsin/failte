@@ -29,6 +29,7 @@ modules:
       packages:
         - brave-origin-beta
         - yakuake
+        - https://bitwarden.com/download/?app=desktop&platform=linux&variant=rpm
        # - starship
        # - micro
     remove:
