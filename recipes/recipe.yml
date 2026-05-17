@@ -6,8 +6,8 @@ name: failte
 description: This is my personal OS image.
 
 # the base image to build on top of (FROM) and the version tag to use
-base-image: ghcr.io/ublue-os/silverblue-main
-image-version: 42 # latest is also supported if you want new updates ASAP
+base-image: ghcr.io/ublue-os/bazzite
+image-version: latest # latest is also supported if you want new updates ASAP
 
 # module configuration, executed in order
 # you can include multiple instances of the same module
@@ -19,15 +19,21 @@ modules:
 
   - type: dnf
     repos:
+      files:
+        - https://brave-browser-rpm-beta.s3.brave.com/brave-browser-beta.repo
       copr:
-        - atim/starship
+       # - atim/starship
+      keys:
+        - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
     install:
       packages:
-        - micro
-        - starship
+        - brave-origin-beta
+        - yakuake
+       # - starship
+       # - micro
     remove:
       packages:
-        # example: removing firefox (in favor of the flatpak)
+        # example: removing firefox
         # "firefox" is the main package, "firefox-langpacks" is a dependency
         - firefox
         - firefox-langpacks # also remove firefox dependency (not required for all packages, this is a special case)
@@ -38,8 +44,18 @@ modules:
         scope: system
         # If no repo information is specified, Flathub will be used by default
         install: # system flatpaks we want all users to have and not remove
-          - org.mozilla.firefox
-          - org.gnome.Loupe
+         # - app.grayjay.Grayjay
+         # - com.github.k4zmu2a.spacecadetpinball
       - scope: user # Also add Flathub user repo, but no user packages
+        install:
+          - app.grayjay.Grayjay
+          - com.github.k4zmu2a.spacecadetpinball
+          
+  - type: os-release
+    properties:
+      ID: failte
+      ID_LIKE: fedora
+      NAME: Failte
+      PRETTY_NAME: Fáilte Linux
 
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
