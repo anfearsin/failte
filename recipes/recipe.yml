@@ -21,7 +21,7 @@ modules:
     repos:
       files:
         - https://brave-browser-rpm-beta.s3.brave.com/brave-browser-beta.repo
-      copr:
+     # copr:
        # - atim/starship
       keys:
         - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
@@ -41,16 +41,12 @@ modules:
   - type: default-flatpaks
     configurations:
       - notify: true # Send notification after install/uninstall is finished (true/false)
-        scope: system
+        scope: user
         # If no repo information is specified, Flathub will be used by default
-        install: # system flatpaks we want all users to have and not remove
-         # - app.grayjay.Grayjay
-         # - com.github.k4zmu2a.spacecadetpinball
-      - scope: user # Also add Flathub user repo, but no user packages
-        install:
+        install: 
           - app.grayjay.Grayjay
           - com.github.k4zmu2a.spacecadetpinball
-          
+     
   - type: os-release
     properties:
       ID: failte
