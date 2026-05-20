@@ -55,4 +55,6 @@ modules:
       NAME: Failte
       PRETTY_NAME: Fáilte Linux
 
+  - type: initramfs
+
   - type: signing # this sets up the proper policy & signing files for signed images to work fully
