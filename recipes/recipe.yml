@@ -49,6 +49,10 @@ modules:
           - app.grayjay.Grayjay
           - com.github.k4zmu2a.spacecadetpinball
           - org.onlyoffice.desktopeditors
+          
+  - type: default-flatpaks
+    configurations:
+      - notify: false      
         scope: user
         remove:
           - app.grayjay.Grayjay
