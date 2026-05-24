@@ -21,8 +21,8 @@ modules:
     repos:
       files:
         - https://brave-browser-rpm-beta.s3.brave.com/brave-browser-beta.repo
-     # copr:
-       # - atim/starship
+      copr:
+        - atim/starship
       keys:
         - https://brave-browser-rpm-release.s3.brave.com/brave-core.asc
     install:
@@ -31,7 +31,7 @@ modules:
         - yakuake
         - https://bitwarden.com/download/?app=desktop&platform=linux&variant=rpm
         - mpv
-       # - starship
+        - starship
        # - micro
     remove:
       packages:
